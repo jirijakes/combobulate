@@ -113,6 +113,9 @@ Here is a list of the languages currently supported.
 +--------------------+--------------------------------------------------------------+------------------------------+
 |OCaml [2]           |tuareg-mode [3], tuareg-interface-mode [3], neocaml-mode, neocaml-interface-mode   | v0.25.0 |
 +--------------------+--------------------------------------------------------------+------------------------------+
+|Rust                |rust-mode, rust-ts-mode                                       |v0.24.2                       |
+|                    |                                                              |                              |
++--------------------+--------------------------------------------------------------+------------------------------+
 
 
 *Don't see your language? If you want your favourite language added, then why not try it yourself? Have a look at ``combobulate-json.el`` for an example.*
@@ -149,7 +152,7 @@ Here's a quick summary of recently added and changed features:
 - Defining new languages for Combobulate to work with is much simpler.
 - Most code now uses the *procedure* system, a simple DSL for specifying how to pick nodes at/around point.
 - Envelope (code templating) system is greatly improved.
-- More languages are supported out of the box (Go, TOML.)
+- More languages are supported out of the box (Go, Rust, TOML.)
 
 Top Tips for using Combobulate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

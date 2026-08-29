@@ -289,7 +289,8 @@ doesn't exist."
     (save-excursion
       (let* ((auto-mode-alist (append auto-mode-alist
                                       '(("\\.go\\'" . go-ts-mode)
-                                        ("\\.ml[i]?\\'" . tuareg-mode))))
+                                        ("\\.ml[i]?\\'" . tuareg-mode)
+                                        ("\\.rs\\'" . rust-ts-mode))))
              ;; required to ensure the right major mode is chosen.
              (major-mode-remap-alist '((python-mode . python-ts-mode)
                                        (css-mode . css-ts-mode)
@@ -297,6 +298,7 @@ doesn't exist."
                                        (js2-mode . js-ts-mode)
                                        (conf-toml-mode . toml-ts-mode)
                                        (bash-mode . bash-ts-mode)
+                                       (rust-mode . rust-ts-mode)
                                        (css-mode . css-ts-mode)
                                        (yaml-mode . yaml-ts-mode)
                                        (json-mode . json-ts-mode)

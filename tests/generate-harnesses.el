@@ -219,6 +219,35 @@
                   :mock-prompt-actions ("my_list" "[]" "x :: xs")
                   :mock-registers ((region . "0"))
                   :mock-proffer-choices (0 1))))
+   ;; General-purpose envelope tests that expand in a blank file, for
+   ;; Rust. The instructions mirror the real `if-statement' and
+   ;; `for-loop' envelopes in `combobulate-rust.el', so the expansion
+   ;; is valid Rust.
+   (combobulate-test-suite
+    :harness-factory #'combobulate-test-harness-envelope
+    :fixture-files '("fixtures/envelope/blank.rs")
+    :collection-name "combobulate-envelope-expand-rust"
+    :action-body '((combobulate-envelope-expand-instructions instructions))
+    :per-marker nil
+    :reverse nil
+    :harness-factory-matrix
+    '(
+      (:test-name "rust-if-statement"
+                  :instructions ("if " (p cond "Condition") " {" n> @ n> "}" > n>)
+                  :mock-prompt-actions ("cond > 0")
+                  :mock-registers nil
+                  :mock-proffer-choices (0))
+      (:test-name "rust-for-loop"
+                  :instructions ("for " (p pattern "Pattern") " in " (p iterator "Iterator")
+                                 " {" n>
+                                 @ n>
+                                 "}" > n>)
+                  ;; prompt answers are consumed in reverse order of the
+                  ;; template's `(p ...)' elements, so `pattern' gets
+                  ;; "x" and `iterator' gets "0..10".
+                  :mock-prompt-actions ("0..10" "x")
+                  :mock-registers nil
+                  :mock-proffer-choices (0))))
    ;; Dragging
    (combobulate-test-suite
     :harness-factory #'combobulate-test-harness-with-fixture-delta
